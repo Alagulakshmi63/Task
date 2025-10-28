@@ -1,0 +1,13 @@
+print("Name: Alagu lakshmi")
+print("Father Name: Mariyappan")
+print("Gender: Female")
+print("Date of Birth: 12-o5-2002")
+print("Married status: Single")
+print("HSS-51% in 2019 passout")
+print("SSLC-69% in 2017 passout")
+print("School: Government Hr.Sec.School,Surandai")
+print("Qualification: BBA-75% in 2022 passout")
+print("Collage: Kamarajar Government Arts and science collage surandai")
+print("Language Know: Tamil&English")
+print("Experience:2years Experience in SBL Knowledge Service Private Limited, Data Entry, Pavoorchathiram")
+
