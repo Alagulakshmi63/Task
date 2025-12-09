@@ -1,0 +1,100 @@
+Patients
+CREATE TABLE patients(Patients_id INT AUTO_INCREMENT PRIMARY KEY,name varchar(100),age int,gender varchar(10),phone varchar(15),address varchar(225),disease varchar(100),room_id int)
+INSERT INTO patients(name,age,gender,phone,address,disease,room_id) VALUES("Alagu",23,"Female",6369858780,"Tenkasi","Heart Pain",01),("Lakshmi",40,"Female",9843676435,"Tirunelveli","leg pain",02),("dinesh",55,"Male",9823048740,"Madurai","pain",03),("Raju",65,"Male",9876447896,"Chennai","Teath pain",04),("Latha",15,"Female",9833784561,"Tiruchy","Fever",05)
+Doctor
+CREATE TABLE Doctors(doctors_id int AUTO_INCREMENT PRIMARY KEY,name varchar(100),specialization varchar(100),phone varchar(15),available_time varchar(50))
+INSERT INTO Doctors(name,specialization,phone,available_time) VALUES('Dr. Suresh', 'Cardiologist', '9000011111', 101),('Dr. Anita', 'Dermatologist', '9000022222', 102),('Dr. Ramesh', 'Orthopedic', '9000033333', 103),('Dr. Kavitha', 'Neurologist', '9000044444', 104),('Dr. John', 'General Physician', '9000055555', 105);
+Appoinments
+CREATE TABLE Appointments (appointment_id INT PRIMARY KEY,patient_code INT,doctor_code INT,date DATE,time VARCHAR(20),status VARCHAR(20));
+INSERT INTO Appointments VALUES(1, 10, 101, '2025-01-10', '10:00 AM', 'Scheduled'),(2, 20, 103, '2025-01-11', '11:30 AM', 'Completed'),(3, 30, 102, '2025-01-12', '03:00 PM', 'Cancelled'),(4, 40, 105, '2025-01-13', '12:00 PM', 'Scheduled'),(5, 50, 104, '2025-01-14', '04:00 PM', 'Completed');
+Billing
+CREATE TABLE Billing (bill_id INT PRIMARY KEY,patient_code INT,amount INT,discount INT,total_amount INT,payment_status VARCHAR(20));
+INSERT INTO Billing VALUES(1, 10, 5000, 500, 4500, 'Paid'),(2, 20, 2000, 0, 2000, 'Paid'),(3, 30, 3500, 300, 3200, 'Pending'),(4, 40, 8000, 800, 7200, 'Paid'),(5, 50, 4500, 0, 4500, 'Pending');
+Rooms
+CREATE TABLE Rooms (room_id INT PRIMARY KEY,room_type VARCHAR(30),availability VARCHAR(20),price_per_day INT);
+INSERT INTO Rooms VALUES(1, 'General', 'Available', 1500),(2, 'ICU', 'Occupied', 6000),(3, 'Semi-Private', 'Available', 	3000),(4, 'Private', 'Occupied', 4500),(5, 'General', 'Available', 1500);
+
+patients
+1.SELECT * FROM patients WHERE Gender="Male"
+2.SELECT * FROM `patients` WHERE name LIKE "a%"
+3.SELECT * FROM `patients` WHERE age BETWEEN 30 AND 50
+4.SELECT * FROM `patients` ORDER BY age DESC LIMIT 3;
+5.UPDATE patients SET phone=9911220192 WHERE Patients_id=3
+6.DELETE FROM patients WHERE age<20
+7.SELECT * FROM `patients` WHERE address IN ("chennai","Delhi")
+8.SELECT * FROM `patients` WHERE address NOT IN ("Hyderabad","Bangalore")
+9.SELECT * FROM `patients` WHERE address is null
+10.UPDATE patients SET address="Unknown" WHERE address is null
+11.SELECT * FROM `patients` ORDER BY age DESC
+12.UPDATE patients SET age=age+1
+13.ALTER TABLE patients CHANGE phone phone_number int
+14.TRUNCATE TABLE patients
+15.DROP TABLE patients
+
+doctors
+1.SELECT * FROM doctors WHERE specialization="Neurologist"
+2.SELECT * FROM `doctors` WHERE name LIKE "%a%"
+3.SELECT * FROM `doctors` WHERE available_time<102
+4.SELECT * FROM doctors ORDER BY name ASC LIMIT 2
+5.UPDATE doctors SET phone=9874679234 WHERE doctors_id=5
+6.DELETE FROM doctors WHERE specialization="Orthopedic"
+7.SELECT * FROM `doctors` WHERE specialization in ("Cardiologist","Dermatologist")
+8.SELECT * FROM `doctors` WHERE specialization NOT in ("General Physician","Orthopedic")
+9.SELECT * FROM `doctors` WHERE available_time IS NOT null
+10.UPDATE doctors SET available_time=available_time+10
+11.ALTER TABLE doctors CHANGE available_time room_number varchar(50)
+12.SELECT * FROM doctors ORDER BY specialization ASC
+13.SELECT * FROM `doctors` WHERE phone LIKE "90000%"
+14.TRUNCATE TABLE doctors
+15.DROP TABLE doctors
+
+appointments
+1.SELECT * FROM appointments WHERE status="scheduled"
+2.SELECT * FROM `appointments` WHERE date="2025-01-12"
+3.SELECT * FROM `appointments` WHERE time LIKE "%__AM"
+4.SELECT * FROM `appointments` ORDER BY appointment_id DESC LIMIT 2
+5.UPDATE appointments SET status="Completed" WHERE appointment_id=3
+6.DELETE FROM appointments WHERE status="cancelled"
+7.SELECT * FROM `appointments` WHERE patient_code IN (10,30,50)
+8.SELECT * FROM `appointments`WHERE doctor_code NOT IN (101,202,303)
+9.SELECT * FROM `appointments` WHERE STATUS is null
+10.UPDATE appointments SET status="Pending" WHERE status is null
+11.SELECT * FROM `appointments` ORDER by date ASC,time ASC
+12.UPDATE appointments SET doctor_code=doctor_code+100
+13.ALTER TABLE appointments ADD remarks varchar(100)
+14.TRUNCATE TABLE appointments
+15.DROP TABLE appointments
+
+billing
+1.SELECT * FROM billing WHERE payment_status="Pending"
+2.SELECT * FROM `billing` WHERE total_amount>4000
+3.SELECT * FROM `billing` WHERE discount>200
+4.SELECT * FROM billing ORDER BY total_amount DESC LIMIT 2
+5.UPDATE billing SET discount=1000 WHERE bill_id=1
+6.DELETE FROM billing WHERE amount<3000
+7.SELECT * FROM `billing` WHERE patient_code in (20,30)
+8.SELECT * FROM `billing` WHERE payment_status not in ("paid")
+9.SELECT * FROM `billing` WHERE total_amount is NOT null
+10.UPDATE billing SET total_amount=total_amount*1.10
+11.ALTER TABLE billing CHANGE payment_status payment varchar(100)
+12.SELECT * FROM `billing` ORDER BY total_amount DESC
+13.SELECT * FROM billing WHERE discount LIKE "5%"
+14.TRUNCATE TABLE billing
+15.DROP TABLE billing
+
+rooms
+1.SELECT * FROM `rooms`
+2.SELECT * FROM `rooms` WHERE room_type="ICU"
+3.SELECT * FROM `rooms` WHERE price_per_day>2000
+4.SELECT * FROM rooms ORDER BY price_per_day ASC
+5.UPDATE rooms SET availability="Available" WHERE room_id=4
+6.DELETE FROM rooms WHERE room_type="General"
+7.SELECT * FROM `rooms` WHERE room_type IN ("Private","ICU")
+8.SELECT * FROM `rooms` WHERE room_type not in ("General")
+9.SELECT * FROM `rooms` WHERE availability is null
+10.UPDATE rooms SET availability="Unknown" WHERE availability is null
+11.UPDATE rooms set price_per_day=price_per_day*1.20
+12.ALTER TABLE rooms ADD floor_no int
+13.SELECT * FROM `rooms` WHERE room_type LIKE "p%"
+14.TRUNCATE TABLE rooms
+15.DROP TABLE rooms
