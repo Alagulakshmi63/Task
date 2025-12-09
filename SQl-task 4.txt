@@ -1,0 +1,96 @@
+Users
+CREATE TABLE Users (user_id INT PRIMARY KEY,username VARCHAR(50),email VARCHAR(100),phone VARCHAR(15),city VARCHAR(50));
+INSERT INTO Users VALUES(1, 'arunk', 'arun@gmail.com', '9876543210', 'Chennai'),(2, 'priya27', 'priya@yahoo.com', '9845078945', 'Bangalore'),(3, 'rahul45', 'rahul@outlook.com', '9778899001', 'Kolkata'),(4, 'lakshmi', 'lakshmi@gmail.com', '9823498765', 'Hyderabad'),(5, 'ram99', 'ram@hotmail.com', '9898981818', 'Delhi');
+1. SELECT * FROM users;
+2. SELECT * FROM users WHERE username LIKE 'A%';
+3. SELECT * FROM users WHERE email LIKE '%gmail%';
+4. SELECT * FROM users WHERE age > 30;
+5. SELECT * FROM users WHERE user_id IN (1,3,5);
+6. SELECT * FROM users WHERE user_id NOT IN (2,4);
+7. SELECT * FROM users WHERE phone IS NULL;
+8. SELECT * FROM users WHERE username IS NOT NULL;
+9. SELECT * FROM users LIMIT 3;
+10. SELECT * FROM users ORDER BY age DESC;
+11. SELECT * FROM users WHERE age + 5 > 40;
+12. SELECT * FROM users WHERE username LIKE '%an%';
+13. DELETE FROM users WHERE age < 20;
+14. UPDATE users SET username='Guest User' WHERE email IS NULL;
+15. SELECT * FROM users WHERE age BETWEEN 25 AND 40;
+
+Product table
+CREATE TABLE Products (product_id INT PRIMARY KEY,product_name VARCHAR(100),category VARCHAR(50),price INT,stock INT);
+INSERT INTO Products VALUES(1, 'Laptop', 'Electronics', 55000, 20),(2, 'Headphones', 'Electronics', 1500, 50),(3, 'Shoes', 'Footwear', 2500, 30),(4, 'Mobile Phone', 'Electronics', 20000, 40),(5, 'Backpack', 'Bags', 1200, 25);
+1. SELECT * FROM products;
+2. SELECT * FROM products WHERE price > 500;
+3. SELECT * FROM products WHERE product_name LIKE 'S%';
+4. SELECT * FROM products WHERE category IS NULL;
+5. SELECT * FROM products WHERE category IS NOT NULL;
+6. SELECT * FROM products ORDER BY price ASC;
+7. SELECT * FROM products WHERE product_name LIKE '%Pro%';
+8. SELECT * FROM products WHERE product_name NOT IN ('Laptop','Mobile');
+9. UPDATE products SET price = price + 200;
+10. UPDATE products SET product_name='Updated Product' WHERE product_id=3;
+11. DELETE FROM products WHERE stock = 0;
+12. SELECT * FROM products LIMIT 2;
+13. SELECT * FROM products WHERE price BETWEEN 500 AND 2000;
+14. SELECT * FROM products WHERE category IN ('Electronics','Appliances');
+15. DROP TABLE products;
+
+orders table
+CREATE TABLE Orders (order_id INT PRIMARY KEY,buyer_code INT,product_code INT,order_date DATE,quantity INT,status VARCHAR(20));
+INSERT INTO Orders VALUES(101, 10, 501, '2025-01-05', 1, 'Delivered'),(102, 20, 502, '2025-01-06', 2, 'Shipped'),(103, 30, 503, '2025-01-07', 1, 'Cancelled'),(104, 40, 504, '2025-01-08', 3, 'Pending'),(105, 50, 505, '2025-01-09', 1, 'Delivered');
+1. SELECT * FROM orders;
+2. SELECT * FROM orders WHERE amount > 1000;
+3. SELECT * FROM orders WHERE status='Pending';
+4. SELECT * FROM orders WHERE order_id IN (1,2,3);
+5. SELECT * FROM orders WHERE order_id NOT IN (4,5);
+6. SELECT * FROM orders WHERE payment_id IS NULL;
+7. SELECT * FROM orders WHERE payment_id IS NOT NULL;
+8. SELECT * FROM orders LIMIT 4;
+9. SELECT * FROM orders ORDER BY amount DESC;
+10. SELECT * FROM orders WHERE amount + 100 > 1500;
+11. SELECT * FROM orders WHERE order_date LIKE '2025%';
+12. UPDATE orders SET order_status='Cancelled' WHERE amount < 500;
+13. DELETE FROM orders WHERE order_status='Delivered';
+14. SELECT * FROM orders WHERE amount BETWEEN 500 AND 2000;
+15. TRUNCATE TABLE orders;
+
+payments table
+CREATE TABLE Payments (payment_id INT PRIMARY KEY,order_code INT,amount INT,method VARCHAR(20),status VARCHAR(20));
+INSERT INTO Payments VALUES(1, 101, 55000, 'UPI', 'Success'),(2, 102, 3000, 'Card', 'Success'),(3, 103, 2500, 'NetBanking', 'Failed'),(4, 104, 60000, 'Cash', 'Pending'),(5, 105, 1200, 'UPI', 'Success');
+
+1. SELECT * FROM payments;
+2. SELECT * FROM payments WHERE amount > 1000;
+3. SELECT * FROM payments ORDER BY amount ASC;
+4. SELECT * FROM payments WHERE method LIKE '%Card%';
+5. SELECT * FROM payments WHERE method IS NULL;
+6. SELECT * FROM payments WHERE method IS NOT NULL;
+7. SELECT * FROM payments WHERE payment_id IN (2,4,6);
+8. SELECT * FROM payments LIMIT 3;
+9. UPDATE payments SET method='UPI' WHERE payment_id=5;
+10. DELETE FROM payments WHERE amount = 0;
+11. SELECT * FROM payments WHERE amount BETWEEN 200 AND 1500;
+12. SELECT * FROM payments WHERE status LIKE '%Success%';
+13. SELECT * FROM payments WHERE payment_id NOT IN (1,3,5);
+14. DROP TABLE payments;
+15. SELECT * FROM payments WHERE amount - 50 > 500;
+
+Inventory table
+CREATE TABLE Inventory (inventory_id INT PRIMARY KEY,product_code INT,available_stock INT,warehouse VARCHAR(50));
+INSERT INTO Inventory VALUES(1, 501, 100, 'Chennai Warehouse'),(2, 502, 200, 'Bangalore Warehouse'),(3, 503, 150, 'Mumbai Warehouse'),(4, 504, 180, 'Delhi Warehouse'),(5, 505, 120, 'Hyderabad Warehouse');
+1. SELECT * FROM inventory;
+2. SELECT * FROM inventory WHERE available_stock > 50;
+3. SELECT * FROM inventory WHERE available_stock < 10;
+4. SELECT * FROM inventory ORDER BY available_stock DESC;
+5. SELECT * FROM inventory WHERE product_name LIKE '%Max%';
+6. UPDATE inventory SET available_stock = available_stock + 10;
+7. DELETE FROM inventory WHERE quantity = 0;
+8. SELECT * FROM inventory WHERE product_id IN (1,2,3);
+9. SELECT * FROM inventory WHERE product_id NOT IN (4,5);
+10. SELECT * FROM inventory LIMIT 5;
+11. SELECT * FROM inventory WHERE product_name LIKE 'L%';
+12. SELECT * FROM inventory WHERE available_stock BETWEEN 20 AND 60;
+13. SELECT * FROM inventory WHERE product_name IS NULL;
+14. SELECT * FROM inventory WHERE product_name IS NOT NULL;
+15. DROP TABLE inventory;
+
