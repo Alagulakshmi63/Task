@@ -1,0 +1,2 @@
+CREATE TABLE Students(Student_id INT AUTO_INCREMENT PRIMARY KEY,name VARCHAR(50),mobile VARCHAR(10),address VARCHAR(100),tenth_mark INT,twelth_mark INT, CGPA DECIMAL(3,2));
+INSERT INTO students(name,mobile,address,tenth_mark,twelth_mark,CGPA)VALUES("ALAGU","6369858780","Tenkasi",450,1120,8.5),("LAKSHMI","9087181760","Tirunelveli",480,1150,9.1)
