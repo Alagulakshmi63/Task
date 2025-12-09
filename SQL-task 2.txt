@@ -1,0 +1,75 @@
+CREATE TABLE Student(Student id int AUTO_INCREMENT PRIMARY KEY,name varchar(30),age int,grate text,city text,STATUS int DEFAULT 1)
+INSERT INTO student(name,age,grate,city)VALUES("alagu",13,"A","Tenkasi"),("Lakshmi",13,"B","Tirunelveli")
+CREATE TABLE Employee(id int AUTO_INCREMENT PRIMARY KEY,name varchar(30),department varchar(40),salary int, city text)
+INSERT INTO employee(name,department,salary,city) VALUES("Alagu","HR",40000,"Tenkasi"),("Lakshmi","Admin",20000,"Tirunelveli"),("Arul","TL",20000,"Tenkasi"),("Mari","Manager",50000,"Chennai"),("Thangam","Manager",50000,"Madurai")
+	
+
+task
+1.SELECT * FROM student
+2.SELECT name,grate FROM student
+3.SELECT name FROM employee WHERE department="HR"
+4.SELECT name FROM employee WHERE salary >30000
+5.SELECT name FROM student WHERE city="chennai"
+6.SELECT name, salary FROM employee
+7.SELECT name FROM student WHERE age>16
+8.SELECT name FROM employee WHERE city="Madurai"
+9.SELECT name FROM student
+10.SELECT name,department FROM employee
+11.SELECT name FROM student WHERE age BETWEEN 15 AND 17
+12.SELECT name FROM student WHERE city <> "Chennai"
+13.SELECT name FROM employee WHERE department <> "IT"
+
+
+
+task 2(Update,Delete)
+student
+1.UPDATE student SET city="Madurai" where id=1
+2.UPDATE student SET grate="A" WHERE city="Chennai"
+3.UPDATE student SET age=18 WHERE name="Alagu"
+4.UPDATE student SET city="Madurai" WHERE age<16
+employee
+1.UPDATE employee SET salary=35000 WHERE id=3
+2.UPDATE employee SET department="Admin" WHERE department="HR"
+3.UPDATE employee SET city="Chennai" WHERE salary>30000
+4.UPDATE employee set name="Mariyappan" WHERE Name="Mari"
+
+student
+1.DELETE FROM student WHERE id=2
+2.DELETE FROM student WHERE city="Chennai"
+3.DELETE FROM student WHERE age<10
+4.DELETE FROM student WHERE name="Priya"
+5.DELETE FROM student WHERE grate="F"
+employee
+1.DELETE FROM employee WHERE id=4
+2.DELETE FROM employee WHERE department="IT"
+3.DELETE FROM employee WHERE salary<15000
+4.DELETE FROM employee WHERE name="Ravi"
+5.DELETE FROM employee WHERE city="Madurai"
+
+Product
+CREATE TABLE Product(Product_id int AUTO_INCREMENT PRIMARY KEY,Product_Name Varchar(100),Category varchar(100),Price Decimal,Stock INT,Supplier varchar(100),STATUS INT DEFAULT 1)
+INSERT INTO product(Product_Name,Category,Price,Stock,Supplier)VALUES("Laptop","Electronic",30000,1000,"Alagu"),("Char","Furniture",10000,500,"Arul"),("Oil","Grocery",100,2000,"Mari"),("Note","Stationery",50,1500,"Thangam"),("Ring","Jewellery",40000,200,"Lakahmi")
+
+task
+1.SELECT * FROM product
+2.SELECT Product_Name,Price FROM product
+3.SELECT * FROM product WHERE Category="Electronic"
+4.SELECT * FROM product WHERE Price>500
+5.SELECT * FROM product WHERE Supplier="Alagu"
+6.SELECT Product_Name,Stock FROM product
+7.SELECT * FROM product WHERE Stock<50
+8.SELECT * FROM product WHERE Category="Furniture"
+9.SELECT Product_Name FROM product
+10.SELECT * FROM product WHERE Category<>"Electronic"
+11.SELECT Product_Name,Category FROM product
+12.SELECT * FROM product WHERE Price BETWEEN 100 AND 300
+13.SELECT * FROM product WHERE Stock=100
+14.SELECT * FROM product WHERE Category="Grocery"
+15.SELECT Product_Name FROM product WHERE Price>200
+16.SELECT Product_Name,Supplier FROM product
+
+update
+1.UPDATE product SET Price=150 WHERE Product_id=3
+2.UPDATE product SET Stock=0 WHERE Category="Electronic"
+3.UPDATE product SET Supplier="Mari" WHERE Product_Name="Oil"
+4.UPDATE product SET Stock=100 WHERE Price<200
